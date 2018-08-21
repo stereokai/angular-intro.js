@@ -71,7 +71,7 @@ declare const require: any;
 	} else {
 		root.angularIntroJs = factory(root.angular, root.introJs);
 	}
-}(typeof self !== "undefined" ? self : this, function (angular: ng.IAngularStatic, introJs: IntroJs.Factory) {
+}(typeof self !== "undefined" ? self : this, function (angular: ng.IAngularStatic, introJs: { introJs: IntroJs.Factory }) {
 	let introStatus = { // i wanted to use enums, but for now it"ll work
 		open: "open",
 		closed: "closed"
@@ -87,7 +87,7 @@ declare const require: any;
 		// static $inject =  []
 
 		constructor() {
-			this.intro = introJs();
+			this.intro = introJs.introJs();
 		}
 
 		/// adds into notifyList, if there"s a valid callback.
